@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'basic info/model/basic_info_model.dart';
 import 'basic info/widget/basic_info_widget.dart';
+import 'common/pdf_generator.dart';
 import 'education info/model/education_info_model.dart';
 import 'education info/widget/education_info_widget.dart';
-import 'enum.dart';
+import 'common/enum.dart';
 import 'experience info/model/experience_info_model.dart';
 import 'experience info/widget/education_info_widget.dart';
-import 'package:pdf/pdf.dart';
 
 class ResumeBuilder extends StatefulWidget {
   const ResumeBuilder({super.key});
@@ -87,7 +87,9 @@ class _ResumeBuilderState extends State<ResumeBuilder> {
     });
   }
 
-  void _generatePDF() async {}
+  void _generatePDF() async {
+    final pdfBytes = await PDFGenerator.generatePDF(basicInfoModel: basicInfo, educationInfoModel: educationInfo, experienceInfoModel: experienceInfo);
+  }
 
   @override
   Widget build(BuildContext context) {
