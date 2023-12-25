@@ -13,17 +13,17 @@ class ExperienceInfoWidget extends StatefulWidget {
 }
 
 class _ExperienceInfoWidgetState extends State<ExperienceInfoWidget> {
-  late TextEditingController courseController;
-  late TextEditingController institutionController;
+  late TextEditingController designationController;
+  late TextEditingController organizationController;
   late TextEditingController dateController;
 
   @override
   void initState() {
     super.initState();
-    courseController = TextEditingController(
-        text: widget.resumeItem.experienceData[widget.index].course);
-    institutionController = TextEditingController(
-        text: widget.resumeItem.experienceData[widget.index].institution);
+    designationController = TextEditingController(
+        text: widget.resumeItem.experienceData[widget.index].designation);
+    organizationController = TextEditingController(
+        text: widget.resumeItem.experienceData[widget.index].organization);
     dateController = TextEditingController(
         text: widget.resumeItem.experienceData[widget.index].date);
   }
@@ -36,52 +36,54 @@ class _ExperienceInfoWidgetState extends State<ExperienceInfoWidget> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: courseController,
-              decoration: const InputDecoration(
-                labelText: 'Course',
-                border: OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                controller: designationController,
+                decoration: const InputDecoration(
+                  labelText: 'Designation',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: institutionController,
-              decoration: const InputDecoration(
-                labelText: 'Institute',
-                border: OutlineInputBorder(),
+              const SizedBox(height: 16),
+              TextField(
+                controller: organizationController,
+                decoration: const InputDecoration(
+                  labelText: 'Organization',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: dateController,
-              decoration: const InputDecoration(
-                labelText: 'Date or Date Range',
-                border: OutlineInputBorder(),
+              const SizedBox(height: 16),
+              TextField(
+                controller: dateController,
+                decoration: const InputDecoration(
+                  labelText: 'Date or Date Range',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                final ExperienceInfoModel updatedEducationInfo;
-
-                updatedEducationInfo = widget.resumeItem;
-
-                updatedEducationInfo.experienceData[widget.index] = ExperienceData(
-                  course: courseController.text,
-                  institution: institutionController.text,
-                  date: dateController.text,
-                );
-
-                Navigator.pop(
-                  context,
-                  updatedEducationInfo,
-                );
-              },
-              child: const Text('Save'),
-            ),
-          ],
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  final ExperienceInfoModel updatedEducationInfo;
+          
+                  updatedEducationInfo = widget.resumeItem;
+          
+                  updatedEducationInfo.experienceData[widget.index] = ExperienceData(
+                    designation: designationController.text,
+                    organization: organizationController.text,
+                    date: dateController.text,
+                  );
+          
+                  Navigator.pop(
+                    context,
+                    updatedEducationInfo,
+                  );
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
         ),
       ),
     );

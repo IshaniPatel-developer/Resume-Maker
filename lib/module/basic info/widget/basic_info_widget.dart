@@ -33,47 +33,49 @@ class _BasicInfoWidgetState extends State<BasicInfoWidget> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: fullNameController,
-              decoration: const InputDecoration(
-                labelText: 'Full Name',
-                border: OutlineInputBorder(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextField(
+                controller: fullNameController,
+                decoration: const InputDecoration(
+                  labelText: 'Full Name',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
+              const SizedBox(height: 16),
+              TextField(
+                controller: emailController,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: summaryController,
-              maxLines: 4,
-              decoration: const InputDecoration(
-                labelText: 'Summary',
-                border: OutlineInputBorder(),
+              const SizedBox(height: 16),
+              TextField(
+                controller: summaryController,
+                maxLines: 4,
+                decoration: const InputDecoration(
+                  labelText: 'Summary',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(
-                  context,
-                  BasicInfoModel(
-                    fullName: fullNameController.text,
-                    email: emailController.text,
-                    summary: summaryController.text,
-                  ),
-                );
-              },
-              child: const Text('Save'),
-            ),
-          ],
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(
+                    context,
+                    BasicInfoModel(
+                      fullName: fullNameController.text,
+                      email: emailController.text,
+                      summary: summaryController.text,
+                    ),
+                  );
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -5,9 +5,9 @@ class ExperienceInfoModel {
 }
 
 class ExperienceData {
-  String course;
-  String institution;
+  String designation;
+  String organization;
   String date;
 
-  ExperienceData({required this.course, required this.institution, required this.date});
+  ExperienceData({required this.designation, required this.organization, required this.date});
 }

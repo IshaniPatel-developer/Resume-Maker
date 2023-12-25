@@ -36,52 +36,53 @@ class _EducationInfoWidgetState extends State<EducationInfoWidget> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: courseController,
-              decoration: const InputDecoration(
-                labelText: 'Course',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: institutionController,
-              decoration: const InputDecoration(
-                labelText: 'Institute',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            TextField(
-              controller: dateController,
-              decoration: const InputDecoration(
-                labelText: 'Date or Date Range',
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                final EducationInfoModel updatedEducationInfo;
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
 
-                updatedEducationInfo = widget.resumeItem;
-
-                updatedEducationInfo.educationData[widget.index] = EducationData(
-                  course: courseController.text,
-                  institution: institutionController.text,
-                  date: dateController.text,
-                );
-
-                Navigator.pop(
-                  context,
-                  updatedEducationInfo,
-                );
-              },
-              child: const Text('Save'),
-            ),
-          ],
+              TextField(
+                controller: courseController,
+                decoration: const InputDecoration(
+                  labelText: 'Course',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: institutionController,
+                decoration: const InputDecoration(
+                  labelText: 'Institute',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: dateController,
+                decoration: const InputDecoration(
+                  labelText: 'Date or Date Range',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  final EducationInfoModel updatedEducationInfo;
+                  updatedEducationInfo = widget.resumeItem;
+                  updatedEducationInfo.educationData[widget.index] = EducationData(
+                    course: courseController.text,
+                    institution: institutionController.text,
+                    date: dateController.text,
+                  );
+          
+                  Navigator.pop(
+                    context,
+                    updatedEducationInfo,
+                  );
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
         ),
       ),
     );
