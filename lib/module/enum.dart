@@ -1,0 +1,4 @@
+enum ResumeSection {
+  basic,
+  experience,
+}
